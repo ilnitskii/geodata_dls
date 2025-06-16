@@ -1,0 +1,43 @@
+inria_building_segmentation/
+├── data/   +                 # Данные (оригинал + обработка)
+│
+├── src/                     # Основной код
+│   ├── data/                # Обработка данных
+│   │   ├── dataset.py       # Кастомный Dataset (PyTorch)
+│   │   ├── preprocessing.py # Нарезка на патчи, аугментации
+│   │   └── transforms.py +   # Albumentations-аугментации
+│   │
+│   ├── models/              # Модели
+│   │   ├── unet.py  +        # U-Net с ResNet34 энкодером
+│   │   └── losses.py  +      # Dice + BCE loss
+│   │
+│   ├── training/            # Обучение
+│   │   ├── train.py   +      # Цикл обучения
+│   │
+│   └── utils/               # Вспомогательное
+│       ├── metrics.py       # IoU, Dice, Precision, Recall
+│       ├── logger.py        # Логирование в TensorBoard
+│       └── visualize.py     # Визуализация масок
+│
+├── configs/                 # Конфигурации
+│   ├── base.py +            # Общие параметры
+│   └── unet_resnet34.yaml   # Параметры модели
+│
+├── notebooks/               # Исследования
+│   ├── 01_data_exploration.ipynb  # Анализ данных
+│   └── 02_model_test.ipynb  # Тест архитектуры
+│
+├── experiments/             # Эксперименты
+│   ├── unet_resnet34/       # Папка эксперимента
+│   │   ├── checkpoints/     # Лучшие веса (.pth)
+│   │   ├── logs/            # Логи TensorBoard
+│   │   └── predictions/     # Примеры предсказаний
+│   └── ...
+│
+├── scripts/                 # Скрипты
+│   ├── train.py             # Запуск обучения
+│   └── predict.py           # Инференс на новых данных
+│
+├── requirements.txt         # Зависимости
+├── environment.yml          # Conda-окружение
+└── README.md                # Инструкции
