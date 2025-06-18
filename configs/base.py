@@ -9,4 +9,4 @@ EPOCHS = 20
 PROJECT_PATH = 'D:\it\geodata_dls' 
 
 DEFAULT_SIZE = 512
-device = 'cuda'
+device = 'cpu'  # 'cuda'
