@@ -9,7 +9,7 @@ model_weights_path = os.path.join(PROJECT_PATH, 'experiments/checkpoints/unet_re
 
 # Интерфейс
 st.title("Сегментация зданий")
-uploaded_file = st.file_uploader("Загрузите спутниковый снимок", type=["jpg", "png"])
+uploaded_file = st.file_uploader("Загрузите спутниковый снимок", type=["jpg", "png", "tif"])
 
 if uploaded_file:
     model = load_model(
