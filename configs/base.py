@@ -1,4 +1,4 @@
-BATCH_SIZE = 12
+BATCH_SIZE = 8
 LR = 3e-4
 EPOCHS = 20
 
