@@ -23,7 +23,7 @@ def save_checkpoint(epoch, model, optimizer, history, val_loss, best_val_loss):
 
         # Сохраняем лучшую модель (если текущая лучше)
         if val_loss < best_val_loss:
-            history[best_epoch] = epoch
+            history['best_epoch'] = epoch
             best_path = os.path.join(checkpoint_dir, f"{model_name}_best.pth")
             torch.save(checkpoint, best_path)
             best_val_loss = val_loss
