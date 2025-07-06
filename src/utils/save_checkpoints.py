@@ -39,7 +39,9 @@ def save_checkpoint(epoch, model, optimizer, history, val_loss, best_val_loss):
 
 def log_to_csv(epoch_data, history, filename='training_log.csv'):
     try:
-        file_exists = os.path.isfile(filename)
+        exp_dir = os.path.join(PROJECT_PATH, "experiments/logs")
+        file_path = os.path.join(exp_dir, filename)
+        file_exists = os.path.isfile(file_path)
         with open(filename, 'a', newline='') as f:
             writer = csv.writer(f)
             if not file_exists:
