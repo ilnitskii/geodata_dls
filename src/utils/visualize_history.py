@@ -19,4 +19,3 @@ def plot_history(history):
     plt.savefig(os.path.join(PROJECT_PATH, 'experiments/plots/training_plot.png'))
     plt.close()
 
-plot_training_history(history)
