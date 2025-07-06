@@ -26,7 +26,7 @@ def validate(model, dataloader, criterion, metrics, device):
     val_loss = 0.0
 
     # Визуализируем случайные две картинки из val_loader'а
-    i, j = random.sample(range(BATCH_SIZE), 2) 
+    i, j = random.sample(range(BATCH_SIZE)//2, 2) 
     
     with torch.no_grad():
         for images, masks in dataloader:
