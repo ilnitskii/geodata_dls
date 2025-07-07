@@ -37,18 +37,18 @@ You can test the model online:
 
 ## 📁 Project Structure
 
-app.py — запуск Streamlit-приложения  
-main_train.ipynb — обучение в Colab  
-main_train_kaggle.ipynb — обучение в Kaggle  
-requirements.txt — зависимости  
-README.md — описание проекта  
-configs/ — конфигурации проекта  
-experiments/ — чекпойнты, логи, предсказания  
-src/app/ — Streamlit-интерфейс и визуализация  
-src/data/ — загрузка и обработка данных  
-src/models/ — модель и функция потерь  
-src/utils/ — метрики, сохранение, графики  
-src/train.py — обучение модели  
+app.py — Launching the Streamlit application  
+main_train.ipynb — Training in Colab  
+main_train_kaggle.ipynb — Training in Kaggle  
+requirements.txt — Dependencies  
+README.md — Project description  
+configs/ — Project configurations  
+experiments/ — Checkpoints, logs, predictions  
+src/app/ — Streamlit interface and visualization  
+src/data/ — Data loading and processing  
+src/models/ — Model and loss function  
+src/utils/ — Metrics, saving, plots  
+src/train.py — Model training   
 
 
 ## 💬 Citation / Credits
