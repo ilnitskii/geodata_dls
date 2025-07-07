@@ -86,3 +86,10 @@ def show_results(model, uploaded_file):
             area_m2 = calculate_area_m2(stats['mask_pixels'], scale_ppm)
             st.write(f"📏 Площадь маски: {area_m2:.2f} м² (проверьте указанный масштаб изображения в левой части интерфейса)")
             
+    st.markdown("""
+    <hr style="margin-top: 50px;">
+    <div style='text-align: center; color: grey; font-size: 14px;'>
+        © 2025 Created by <b>Evgenii Ilnitski</b> |
+        <a href="https://github.com/ilnitskii/geodata_dls" target="_blank">GitHub Repository</a>
+    </div>
+    """, unsafe_allow_html=True)
