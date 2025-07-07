@@ -7,12 +7,6 @@ from src.app.viz_utils import *
 def show_results(model, uploaded_file):
     """Обработка и отображение результатов с делением на патчи"""
 
-    st.sidebar.header("Настройки масштаба")
-    with st.sidebar:
-        with st.expander("Настройки масштаба", expanded=True):  # <- expanded=True делает блок изначально развёрнутым
-            use_scale = st.checkbox("Рассчитать площадь в м²", value=False)
-            scale_ppm = get_scale_from_user() if use_scale else None
-
     with st.spinner("Обработка большого изображения..."):
         # Загрузка изображения
         image = Image.open(uploaded_file)
@@ -58,7 +52,11 @@ def show_results(model, uploaded_file):
         st.image(overlay_with_ruler if show_ruler else overlay, 
                 caption="Наложение маски на исходное изображение", 
                 width=800)
-           
+        
+        st.subheader("Настройки масштаба")
+        use_scale = st.checkbox("Рассчитать площадь в м²", value=False)
+        scale_ppm = get_scale_from_user() if use_scale else None   
+
         # Скачивание результата
         buf = io.BytesIO()  # Создаем буфер в памяти
         overlay_pil = Image.fromarray(overlay)  # Конвертация в PIL Image
