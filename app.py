@@ -1,14 +1,26 @@
 import streamlit as st
 from configs.base import *
-from src.app.model_utils import load_model
+from src.models.unet import UNet
 from src.app.viz import show_results
 import os
 import torch
 
 
-APP_PATH = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-model_weights_path = os.path.join(APP_PATH, 'experiments/checkpoints/UNet_best.pth')
+def load_model(weights_path, device="cpu"):
+    """Загрузка модели с весами"""
+    model = UNet(n_classes=1)
+    model.load_state_dict(torch.load(
+        (weights_path),
+        map_location=torch.device(device)
+    ))
+    model.eval()
+    return model
+
+# APP_PATH = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# model_weights_path = os.path.join(APP_PATH, 'experiments/checkpoints/UNet_best.pth')
+
+model_weights_path = os.path.join('experiments', 'checkpoints', 'UNet_best.pth')
 
 # Интерфейс
 st.title("Сегментация зданий")
