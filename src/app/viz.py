@@ -7,7 +7,7 @@ from src.app.viz_utils import *
 def show_results(model, uploaded_file):
     """Обработка и отображение результатов с делением на патчи"""
 
-    st.sidebar.header("Настройки масштаба", True)
+    st.sidebar.header("Настройки масштаба")
     with st.sidebar:
         use_scale = st.checkbox("Рассчитать площадь в м²", value=True)
         scale_ppm = get_scale_from_user() if use_scale else None

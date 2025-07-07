@@ -110,10 +110,8 @@ uploaded_file = st.file_uploader(
 )
 
 if uploaded_file:
-    # Показываем индикатор загрузки
-    with st.spinner("Обработка изображения..."):
-        model = get_model()
-        show_results(model, uploaded_file)
+    model = get_model()
+    show_results(model, uploaded_file)
         
 st.markdown("""
     <hr style="margin-top: 50px;">
