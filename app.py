@@ -115,7 +115,13 @@ if uploaded_file:
         model = get_model()
         show_results(model, uploaded_file)
         
-        
+st.markdown("""
+    <hr style="margin-top: 50px;">
+    <div style='text-align: center; color: grey; font-size: 14px;'>
+        © 2025 Created by <b>Evgenii Ilnitski</b> |
+        <a href="https://github.com/ilnitskii/geodata_dls" target="_blank">GitHub Repository</a>
+    </div>
+    """, unsafe_allow_html=True)        
         
 # import streamlit as st
 # from configs.base import *

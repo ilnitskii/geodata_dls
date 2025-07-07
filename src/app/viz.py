@@ -7,7 +7,7 @@ from src.app.viz_utils import *
 def show_results(model, uploaded_file):
     """Обработка и отображение результатов с делением на патчи"""
 
-    st.sidebar.header("Настройки масштаба")
+    st.sidebar.header("Настройки масштаба", True)
     with st.sidebar:
         use_scale = st.checkbox("Рассчитать площадь в м²", value=True)
         scale_ppm = get_scale_from_user() if use_scale else None
@@ -86,10 +86,4 @@ def show_results(model, uploaded_file):
             area_m2 = calculate_area_m2(stats['mask_pixels'], scale_ppm)
             st.write(f"📏 Площадь маски: {area_m2:.2f} м² (проверьте указанный масштаб изображения в левой части интерфейса)")
             
-    st.markdown("""
-    <hr style="margin-top: 50px;">
-    <div style='text-align: center; color: grey; font-size: 14px;'>
-        © 2025 Created by <b>Evgenii Ilnitski</b> |
-        <a href="https://github.com/ilnitskii/geodata_dls" target="_blank">GitHub Repository</a>
-    </div>
-    """, unsafe_allow_html=True)
+    
