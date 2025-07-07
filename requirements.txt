@@ -1,10 +1,11 @@
-albumentations==2.0.8
-ipython==8.29.0
-matplotlib==3.10.3
-numpy==2.3.1
-# opencv_python==4.11.0.86
-opencv_python_headless==4.11.0.86
-Pillow==11.3.0
-streamlit==1.46.0
+numpy==1.26.4
+albumentations==1.4.0
+scipy==1.13.0
+opencv-python-headless==4.8.0.76
+Pillow==10.3.0
+matplotlib==3.8.4
 torch==2.7.1
-torchmetrics==1.7.4
+torchvision==0.18.1
+torchaudio==2.7.1
+fastai==2.7.19
+ipython==8.29.0
