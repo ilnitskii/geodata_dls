@@ -3,15 +3,11 @@ from PIL import Image
 import io
 import torch
 from src.app.viz_utils import *
-
+from app import scale_ppm
 def show_results(model, uploaded_file):
     """Обработка и отображение результатов с делением на патчи"""
 
-    st.sidebar.header("Настройки масштаба")
-    with st.sidebar:
-        with st.expander("Настройки масштаба", expanded=True):  # <- expanded=True делает блок изначально развёрнутым
-            use_scale = st.checkbox("Рассчитать площадь в м²", value=False)
-            scale_ppm = get_scale_from_user() if use_scale else None
+    
 
     with st.spinner("Обработка большого изображения..."):
         # Загрузка изображения

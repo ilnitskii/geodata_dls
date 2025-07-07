@@ -2,6 +2,7 @@ import streamlit as st
 from configs.base import *
 from src.models.unet import UNet
 from src.app.viz import show_results
+from src.app.viz_utils import *
 import os
 import torch
 import requests
@@ -112,7 +113,12 @@ uploaded_file = st.file_uploader(
 if uploaded_file:
     model = get_model()
     show_results(model, uploaded_file)
-        
+
+st.sidebar.header("Настройки масштаба")
+with st.sidebar:
+    use_scale = st.checkbox("Рассчитать площадь в м²", value=False)
+    scale_ppm = get_scale_from_user() if use_scale else None
+
 st.markdown("""
     <hr style="margin-top: 50px;">
     <div style='text-align: center; color: grey; font-size: 14px;'>
