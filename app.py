@@ -8,7 +8,7 @@ import torch
 
 APP_PATH = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-model_weights_path = os.path.join(APP_PATH, 'experiments/checkpoints/unet_resnet34_buildings_best.pth')
+model_weights_path = os.path.join(APP_PATH, 'experiments/checkpoints/UNet_best.pth')
 
 # Интерфейс
 st.title("Сегментация зданий")
