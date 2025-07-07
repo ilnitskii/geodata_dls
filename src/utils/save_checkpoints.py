@@ -2,6 +2,7 @@ import os
 import torch
 import csv 
 from configs.base import *
+from IPython.display import FileLink
 
 def save_checkpoint(epoch, model, optimizer, history, val_loss, best_val_loss):
     try:
@@ -20,7 +21,7 @@ def save_checkpoint(epoch, model, optimizer, history, val_loss, best_val_loss):
         # Всегда сохраняем последнее состояние
         last_path = os.path.join(checkpoint_dir, f"{model_name}_last.pth")
         torch.save(checkpoint, last_path)
-
+        display(FileLink(last_path, result_html_prefix="Скачать модель: "))
         # Сохраняем лучшую модель (если текущая лучше)
         if val_loss < best_val_loss:
             history['best_epoch'] = epoch
