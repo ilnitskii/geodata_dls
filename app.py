@@ -21,7 +21,7 @@ def download_model() -> str:
         
         if not os.path.exists(MODEL_PATH):
             st.info("Загрузка модели... Это может занять несколько минут")
-            url = f"https://drive.google.com/uc?id={GOOGLE_DRIVE_ID}"
+            url = f"https://drive.google.com/uc?export=download&confirm=pbef&id={GOOGLE_DRIVE_ID}"
             gdown.download(url, MODEL_PATH, quiet=False)
             
             # Проверка, что файл скачался
