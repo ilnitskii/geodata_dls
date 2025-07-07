@@ -21,13 +21,14 @@ We use a custom U-Net model with a ResNet-34 encoder trained **from scratch** (n
 
 - **IoU (Intersection over Union)**
 - **F1-score**
+
 📈 *(to be added below asap)*
 
 ## 🖼️ Example Predictions
 
 | Input Image |    Mask    | Input + Mask |
 |-------------|------------|--------------|
-| ![](https://drive.google.com/uc?export=view&id=1Mj-gG1QZkvH86kGn5LOonVZPdqNU6K3i) | ![](https://drive.google.com/uc?export=view&id=1MBF2gEA_C9Qp-hZrl3uRoKvFBQEiffIH) | ![](https://drive.google.com/uc?export=view&id=14J4dO76fW8vtHbUh4zN4ZyDltiRMiWVG) |
+| ![](experiments/predictions/input.jpg) | ![](experiments/predictions/mask.jpg) | ![](experiments/predictions/inp+mask.jpg) |
 
 
 ## 🚀 Try it yourself

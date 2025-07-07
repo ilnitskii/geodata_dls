@@ -1,3 +1,5 @@
+
+# Для обучения на kaggle:
 numpy==1.26.4
 albumentations==1.4.0
 scipy==1.13.0
@@ -9,3 +11,16 @@ torchvision==0.18.1
 torchaudio==2.7.1
 fastai==2.7.19
 ipython==8.29.0
+
+
+# Для инференса на Streamlit:
+
+# numpy==1.26.4
+# albumentations==1.4.0
+# opencv-python-headless==4.8.0.76
+# Pillow==10.3.0
+# matplotlib==3.8.4
+# streamlit==1.26.0
+# torch==2.6.0  # Не выше!
+# torchmetrics==1.2.1
+# ipython==8.29.0
