@@ -9,7 +9,7 @@ EPOCHS = 20
 PROJECT_PATH = '/kaggle/working/geodata_dls' 
 
 # для отладки из vs code
-# PROJECT_PATH = 'D:\it\geodata_dls' 
+# PROJECT_PATH = 'D:/it/geodata_dls' 
 
 
 DEFAULT_SIZE = 512

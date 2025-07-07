@@ -5,16 +5,15 @@ from src.app.viz import show_results
 import os
 import torch
 import gdown
-from typing import Optional
 
 # Константы путей
 MODEL_DIR = "experiments/checkpoints"
 MODEL_NAME = "UNet_best.pth"
 MODEL_PATH = os.path.join(MODEL_DIR, MODEL_NAME)
-GOOGLE_DRIVE_ID = "1HQaNpXAZhSHS0J9kdKYXDQa3muZMdfd4"
+GOOGLE_DRIVE_ID = "15ptjzR8jtS5VsyaXrGmHts0YOrHD3md3"
 
 @st.cache_resource(ttl=3600)  # Кэш на 1 час (можно обновить при необходимости)
-def download_model() -> str:
+def download_model():
     """Скачивает модель с Google Drive при необходимости"""
     try:
         os.makedirs(MODEL_DIR, exist_ok=True)
@@ -46,7 +45,7 @@ def load_model(weights_path: str, device: str = "cpu") -> torch.nn.Module:
         checkpoint = torch.load(weights_path, map_location=device)
         
         # Инициализируем модель
-        model = UNet(n_classes=1)
+        model = UNet()
         
         # Совместимость с разными форматами чекпоинтов
         if 'model_state_dict' in checkpoint:
