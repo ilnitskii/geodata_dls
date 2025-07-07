@@ -4,35 +4,65 @@ from src.models.unet import UNet
 from src.app.viz import show_results
 import os
 import torch
-import gdown
+import requests
+# import gdown
 
-# Константы путей
 MODEL_DIR = "experiments/checkpoints"
-MODEL_NAME = "UNet_best.pth"
-MODEL_PATH = os.path.join(MODEL_DIR, MODEL_NAME)
-GOOGLE_DRIVE_ID = "15ptjzR8jtS5VsyaXrGmHts0YOrHD3md3"
+MODEL_PATH = os.path.join(MODEL_DIR, "UNet_weights.pth")
 
-@st.cache_resource(ttl=3600)  # Кэш на 1 час (можно обновить при необходимости)
+
+# DROPBOX
+@st.cache_resource(ttl=3600)
 def download_model():
-    """Скачивает модель с Google Drive при необходимости"""
+    """Скачивает модель с Dropbox при необходимости"""
     try:
         os.makedirs(MODEL_DIR, exist_ok=True)
-        
+
         if not os.path.exists(MODEL_PATH):
             st.info("Загрузка модели... Это может занять несколько минут")
-            url = f"https://drive.google.com/uc?export=download&confirm=pbef&id={GOOGLE_DRIVE_ID}"
-            gdown.download(url, MODEL_PATH, quiet=False)
-            
-            # Проверка, что файл скачался
-            if not os.path.exists(MODEL_PATH):
-                st.error("Не удалось загрузить модель!")
+
+            url = "https://www.dropbox.com/scl/fi/rnzdu2qw4ygoxizrgqb86/UNet_weights.pth?rlkey=07am8v1ekdabboxc2u536gee3&st=ctgvk2m4&dl=1"
+            response = requests.get(url, stream=True)
+
+            if response.status_code == 200:
+                with open(MODEL_PATH, 'wb') as f:
+                    for chunk in response.iter_content(chunk_size=8192):
+                        f.write(chunk)
+            else:
+                st.error(f"Ошибка при скачивании модели: {response.status_code}")
                 st.stop()
-                
+
         return MODEL_PATH
-    
+
     except Exception as e:
         st.error(f"Ошибка загрузки модели: {str(e)}")
         st.stop()
+
+# MODEL_NAME = "UNet_best.pth"
+# MODEL_PATH = os.path.join(MODEL_DIR, MODEL_NAME)
+# GOOGLE_DRIVE_ID = "15ptjzR8jtS5VsyaXrGmHts0YOrHD3md3"
+# GOOGLE DRIVE
+# @st.cache_resource(ttl=3600)  # Кэш на 1 час (можно обновить при необходимости)
+# def download_model():
+#     """Скачивает модель с Google Drive при необходимости"""
+#     try:
+#         os.makedirs(MODEL_DIR, exist_ok=True)
+        
+#         if not os.path.exists(MODEL_PATH):
+#             st.info("Загрузка модели... Это может занять несколько минут")
+#             url = f"https://www.dropbox.com/scl/fi/rnzdu2qw4ygoxizrgqb86/UNet_weights.pth?rlkey=07am8v1ekdabboxc2u536gee3&st=ctgvk2m4&dl=1"
+#             gdown.download(url, MODEL_PATH, quiet=False)
+            
+#             # Проверка, что файл скачался
+#             if not os.path.exists(MODEL_PATH):
+#                 st.error("Не удалось загрузить модель!")
+#                 st.stop()
+                
+#         return MODEL_PATH
+    
+#     except Exception as e:
+#         st.error(f"Ошибка загрузки модели: {str(e)}")
+#         st.stop()
 
 def load_model(weights_path: str, device: str = "cpu") -> torch.nn.Module:
     """Загружает модель с весами"""

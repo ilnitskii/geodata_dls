@@ -27,5 +27,5 @@ streamlit==1.46.0
 torch==2.7.1
 torchvision==0.22.1
 torchmetrics==1.7.4
-
+requests>=2.25.0
 
