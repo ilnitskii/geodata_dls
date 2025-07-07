@@ -9,11 +9,14 @@ import torch
 
 def load_model(weights_path, device="cpu"):
     """Загрузка модели с весами"""
+    checkpoint = torch.load(weights_path, map_location=device)
     model = UNet(n_classes=1)
-    model.load_state_dict(torch.load(
-        (weights_path),
-        map_location=torch.device(device)
-    ))
+    model.load_state_dict(checkpoint['model_state_dict'])
+    # model.load_state_dict(torch.load(
+    #     (weights_path),
+    #     map_location=torch.device(device)
+    # ))
+    model.to(device)
     model.eval()
     return model
 
