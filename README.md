@@ -27,30 +27,28 @@ We use a custom U-Net model with a ResNet-34 encoder trained **from scratch** (n
 
 | Input Image |    Mask    | Input + Mask |
 |-------------|------------|--------------|
-| ![](https://drive.google.com/file/d/1Mj-gG1QZkvH86kGn5LOonVZPdqNU6K3i/view?usp=drive_link) | ![](https://drive.google.com/file/d/1MBF2gEA_C9Qp-hZrl3uRoKvFBQEiffIH/view?usp=sharing) | ![](https://drive.google.com/file/d/14J4dO76fW8vtHbUh4zN4ZyDltiRMiWVG/view?usp=sharing) |
+| ![](https://drive.google.com/uc?export=view&id=1Mj-gG1QZkvH86kGn5LOonVZPdqNU6K3i) | ![](https://drive.google.com/uc?export=view&id=1MBF2gEA_C9Qp-hZrl3uRoKvFBQEiffIH) | ![](https://drive.google.com/uc?export=view&id=14J4dO76fW8vtHbUh4zN4ZyDltiRMiWVG) |
+
 
 ## 🚀 Try it yourself
 
 You can test the model online:  
 🔗 **[Streamlit Demo](https://geodatadls.streamlit.app/)** — upload your own image and get building masks in real time.
 
-## 📁 Repository Structure
+## 📁 Project Structure
 
-GEODATA_DLS/
-├── configs/ # Конфигурации и базовые параметры
-├── experiments/ # Результаты обучения (веса, логи, предсказания)
-├── src/ # Основной код проекта
-│ ├── app/ # Streamlit-интерфейс и визуализация
-│ ├── data/ # Загрузка, препроцессинг и аугментации данных
-│ ├── models/ # Архитектура модели и функция потерь
-│ └── utils/ # Метрики, сохранение, визуализация обучения
-├── train.py # Скрипт для обучения модели
-├── app.py # Точка входа в Streamlit-приложение
-├── main_train.ipynb # Jupyter-ноутбук для локального обучения
-├── main_train_kaggle.ipynb # Ноутбук под Kaggle-среду
-├── requirements.txt # Зависимости проекта
-├── README.md # Описание проекта
-
+app.py — запуск Streamlit-приложения  
+main_train.ipynb — обучение в Colab  
+main_train_kaggle.ipynb — обучение в Kaggle  
+requirements.txt — зависимости  
+README.md — описание проекта  
+configs/ — конфигурации проекта  
+experiments/ — чекпойнты, логи, предсказания  
+src/app/ — Streamlit-интерфейс и визуализация  
+src/data/ — загрузка и обработка данных  
+src/models/ — модель и функция потерь  
+src/utils/ — метрики, сохранение, графики  
+src/train.py — обучение модели  
 
 
 ## 💬 Citation / Credits
