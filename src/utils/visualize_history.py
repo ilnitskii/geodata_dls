@@ -1,5 +1,7 @@
 
 import matplotlib.pyplot as plt
+import os
+from configs.base import *
 
 def plot_history(history):
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(15, 5))
