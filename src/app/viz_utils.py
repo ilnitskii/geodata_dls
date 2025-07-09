@@ -112,8 +112,9 @@ def add_pixel_ruler(image, tick_step=100):
         font = ImageFont.truetype("arial.ttf", font_size)
     except:
         font = ImageFont.load_default()
-    bg_color = (40, 40, 40, 230)  # Цвет фона шкалы с прозрачностью
-    
+    bg_color = (20, 20, 20, 255)  # Цвет фона шкалы с прозрачностью
+    text_color = (180, 220, 255)
+
     # Создаем новое изображение с увеличенными размерами для шкал
     new_width = width + ruler_size
     new_height = height + ruler_size
@@ -127,17 +128,17 @@ def add_pixel_ruler(image, tick_step=100):
     for y in range(0, height, tick_step):
         y_pos = y
         # Линия деления
-        draw.line([(ruler_size-10, y_pos), (ruler_size, y_pos)], fill="white", width=1)
+        draw.line([(ruler_size-10, y_pos), (ruler_size, y_pos)], fill=text_color, width=1)
         # Подпись
-        draw.text((5, y_pos-5), str(y), fill="white", font=font)
+        draw.text((5, y_pos-5), str(y), fill=text_color, font=font)
     
     # Рисуем горизонтальную шкалу (ось X)
     for x in range(0, width, tick_step):
         x_pos = x + ruler_size
         # Линия деления
-        draw.line([(x_pos, height), (x_pos, height+10)], fill="white", width=1)
+        draw.line([(x_pos, height), (x_pos, height+10)], fill=text_color, width=1)
         # Подпись
-        draw.text((x_pos-10, height+15), str(x), fill="white", font=font)
+        draw.text((x_pos-10, height+15), str(x), fill=text_color, font=font)
     
     # Добавляем серый фон для шкал
     overlay = Image.new('RGBA', new_img.size, bg_color)
