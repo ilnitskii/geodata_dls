@@ -12,15 +12,14 @@ MODEL_PATH = os.path.join(MODEL_DIR, "UNet_weights.pth")
 
 
 # DROPBOX
-@st.cache_resource(ttl=86400) # раз в сутки обновляется модель
+@st.cache_resource
 def download_model():
     """Скачивает модель с Dropbox"""
     try:
         os.makedirs(MODEL_DIR, exist_ok=True)
 
         if not os.path.exists(MODEL_PATH):
-            status = st.empty()
-            status.info("Загрузка модели... Это может занять несколько минут")
+            
 
             url = "https://www.dropbox.com/scl/fi/rnzdu2qw4ygoxizrgqb86/UNet_weights.pth?rlkey=07am8v1ekdabboxc2u536gee3&st=ctgvk2m4&dl=1"
             response = requests.get(url, stream=True)
@@ -29,7 +28,7 @@ def download_model():
                 with open(MODEL_PATH, 'wb') as f:
                     for chunk in response.iter_content(chunk_size=8192):
                         f.write(chunk)
-                status = st.empty()
+                
             else:
                 st.error(f"Ошибка при скачивании модели: {response.status_code}")
                 st.stop()
@@ -71,7 +70,7 @@ def load_model(weights_path: str, device: str = "cpu") -> torch.nn.Module:
     try:
         # Проверяем доступность файла
         if not os.path.exists(weights_path):
-            raise FileNotFoundError(f"Файл модели не найден: {weights_path}")
+            raise FileNotFoundError(f"File of model not found: {weights_path}")
         
         # Загружаем чекпоинт
         checkpoint = torch.load(weights_path, map_location=device)
@@ -90,7 +89,7 @@ def load_model(weights_path: str, device: str = "cpu") -> torch.nn.Module:
         return model
         
     except Exception as e:
-        st.error(f"Ошибка загрузки модели: {str(e)}")
+        st.error(f"Error: {str(e)}")
         st.stop()
 
 def dual_text(en, ru, level=1):
@@ -114,10 +113,10 @@ def get_model():
     return load_model(model_path, device='cpu')
 
 # Загрузка изображения
+dual_text("Upload your satellite image", 
+          "Загрузите спутниковый снимок", level=2)
 uploaded_file = st.file_uploader(
-    "Загрузите спутниковый снимок", 
-    type=["jpg", "jpeg", "png", "tif", "tiff"],
-    help="Поддерживаются форматы JPG, PNG, TIFF"
+    type=["jpg", "jpeg", "png", "tif", "tiff"]
 )
 
 if uploaded_file:

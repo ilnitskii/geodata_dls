@@ -72,23 +72,59 @@ def calculate_mask_stats(image_array, mask):
     }
 
 def get_scale_from_user():
-    """Интерактивный запрос масштаба у пользователя"""
-    st.markdown("**Для расчета масштаба изображения укажите:**")
+    """Интерактивный запрос масштаба у пользователя (двуязычно)"""
+
+    st.markdown("""
+    <strong>ℹ️ If you don't know the scale of the image, estimate the real-world length of some object in meters and its length in pixels.</strong><br>
+    <span style='font-size: 0.9em; color: rgba(255,255,255,0.5);'>
+    Если Вам неизвестен масштаб исходного снимка, то для его расчета оцените по снимку размеры какого-нибудь объекта в метрах и пикселях.
+    </span>
+    """, unsafe_allow_html=True)
+
     known_length = st.number_input(
-        "Длина объекта (м):",
+        "Object length (meters) / Длина объекта (м):",
         min_value=0.1,
         value=1.0,
         step=0.1
     )
+
     object_pixels = st.number_input(
-        "Его длина в пикселях:",
+        "Object length (pixels) / Его длина в пикселях:",
         min_value=1,
         value=100,
         step=1
     )
+
     calculated_ppm = object_pixels / known_length
-    st.write(f"Рассчитано: {calculated_ppm:.1f} пикселей/метр")
+
+    st.markdown(f"""
+    **Estimated scale: {calculated_ppm:.1f} px/m**  
+    <span style='font-size: 0.9em; color: rgba(255,255,255,0.5);'>
+    Расчитано: {calculated_ppm:.1f} пикселей/метр
+    </span>
+    """, unsafe_allow_html=True)
+
     return calculated_ppm
+
+
+# def get_scale_from_user():
+#     """Интерактивный запрос масштаба у пользователя"""
+#     st.markdown("**Если Вам неизвестен масштаб исходного снимка, то для его расчета оцените по снимку размеры какого-нибудь объекта в метрах и пикселях.**")
+#     known_length = st.number_input(
+#         "Длина объекта (м):",
+#         min_value=0.1,
+#         value=1.0,
+#         step=0.1
+#     )
+#     object_pixels = st.number_input(
+#         "Его длина в пикселях:",
+#         min_value=1,
+#         value=100,
+#         step=1
+#     )
+#     calculated_ppm = object_pixels / known_length
+#     st.write(f"Рассчитано: {calculated_ppm:.1f} пикселей/метр")
+#     return calculated_ppm
 
 def calculate_area_m2(mask_pixels, scale_ppm):
     """Вычисляет площадь в квадратных метрах, если задан масштаб"""
@@ -148,5 +184,5 @@ def add_pixel_ruler(image, tick_step=100):
         draw.line([(x_pos, height), (x_pos, height+10)], fill=text_color, width=1)
         # Подпись
         draw.text((x_pos-10, height+15), str(x), fill=text_color, font=font)
-        
+
     return new_img
