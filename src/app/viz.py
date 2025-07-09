@@ -46,7 +46,7 @@ def show_results(model, uploaded_file):
             
         show_ruler = st.checkbox("Показать пиксельную шкалу", False)
         if show_ruler:
-            tick_step = st.slider("Шаг шкалы (пикселей)", 50, 500, 100)
+            tick_step = st.slider("Шаг шкалы (пикселей)", 20, 200, 50)
             overlay_with_ruler = add_pixel_ruler(overlay, tick_step)
 
         # Наложение маски

@@ -93,8 +93,17 @@ def load_model(weights_path: str, device: str = "cpu") -> torch.nn.Module:
         st.error(f"Ошибка загрузки модели: {str(e)}")
         st.stop()
 
+def dual_text(en, ru, level=1):
+    st.markdown(f"""
+    <h{level} style='margin-bottom: 0'>{en}</h{level}>
+    <p style='font-size: 0.9em; color: rgba(255, 255, 255, 0.5); margin-top: 0'>
+    {ru}
+    </p>
+    """, unsafe_allow_html=True)
+
 # Основной интерфейс
-st.title("Сегментация зданий по спутниковым снимкам")
+dual_text("Segmentation of buildings using satellite images",
+          "Сегментация зданий на спутниковых снимках", level=1)
 
 # Скачиваем модель (если нужно)
 model_path = download_model()
