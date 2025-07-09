@@ -1,4 +1,5 @@
 import streamlit as st
+import numpy as np
 from PIL import Image
 import io
 import torch
@@ -9,7 +10,7 @@ def show_results(model, uploaded_file):
 
     with st.spinner("Обработка большого изображения..."):
         # Загрузка изображения
-        image = Image.open(uploaded_file)
+        image = Image.open(uploaded_file).convert("RGB")
         img_array = np.array(image)
         
         # Разбиение на патчи
