@@ -113,9 +113,8 @@ def get_model():
     return load_model(model_path, device='cpu')
 
 # Загрузка изображения
-dual_text("Upload your satellite image", 
-          "Загрузите спутниковый снимок", level=2)
 uploaded_file = st.file_uploader(
+    label="Upload your satellite image / Загрузите спутниковый снимок",
     type=["jpg", "jpeg", "png", "tif", "tiff"]
 )
 
