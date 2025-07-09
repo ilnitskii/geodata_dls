@@ -12,14 +12,15 @@ MODEL_PATH = os.path.join(MODEL_DIR, "UNet_weights.pth")
 
 
 # DROPBOX
-@st.cache_resource(ttl=3600)
+@st.cache_resource(ttl=86400) # раз в сутки обновляется модель
 def download_model():
     """Скачивает модель с Dropbox"""
     try:
         os.makedirs(MODEL_DIR, exist_ok=True)
 
         if not os.path.exists(MODEL_PATH):
-            st.info("Загрузка модели... Это может занять несколько минут")
+            status = st.empty()
+            status.info("Загрузка модели... Это может занять несколько минут")
 
             url = "https://www.dropbox.com/scl/fi/rnzdu2qw4ygoxizrgqb86/UNet_weights.pth?rlkey=07am8v1ekdabboxc2u536gee3&st=ctgvk2m4&dl=1"
             response = requests.get(url, stream=True)
@@ -28,6 +29,7 @@ def download_model():
                 with open(MODEL_PATH, 'wb') as f:
                     for chunk in response.iter_content(chunk_size=8192):
                         f.write(chunk)
+                status = st.empty()
             else:
                 st.error(f"Ошибка при скачивании модели: {response.status_code}")
                 st.stop()

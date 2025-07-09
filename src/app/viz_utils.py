@@ -121,6 +121,15 @@ def add_pixel_ruler(image, tick_step=100):
     new_img = Image.new('RGBA', (new_width, new_height), (0, 0, 0, 0))
     new_img.paste(img, (ruler_size, 0))
     
+    
+    
+    # Добавляем серый фон для шкал
+    overlay = Image.new('RGBA', new_img.size, bg_color)
+    # Стираем центральную часть (где основное изображение)
+    clear_area = (ruler_size, 0, new_width, height)
+    overlay.paste((0,0,0,0), clear_area)
+    new_img = Image.alpha_composite(new_img, overlay)
+    
     # Теперь создаем ImageDraw для нового изображения
     draw = ImageDraw.Draw(new_img)
     
@@ -139,12 +148,5 @@ def add_pixel_ruler(image, tick_step=100):
         draw.line([(x_pos, height), (x_pos, height+10)], fill=text_color, width=1)
         # Подпись
         draw.text((x_pos-10, height+15), str(x), fill=text_color, font=font)
-    
-    # Добавляем серый фон для шкал
-    overlay = Image.new('RGBA', new_img.size, bg_color)
-    # Стираем центральную часть (где основное изображение)
-    clear_area = (ruler_size, 0, new_width, height)
-    overlay.paste((0,0,0,0), clear_area)
-    new_img = Image.alpha_composite(new_img, overlay)
-    
+        
     return new_img
