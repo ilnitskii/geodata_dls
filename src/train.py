@@ -8,8 +8,8 @@ def train(model, dataloader, optimizer, criterion, device):
     running_loss = 0.0
     
     for images, masks in dataloader:
-        images = images.to(device)
-        masks = masks.unsqueeze(1).to(device)
+        images = images.to(device, non_blocking=True)
+        masks = masks.unsqueeze(1).to(device, non_blocking=True)
         
         optimizer.zero_grad()
         outputs = model(images)
@@ -27,14 +27,14 @@ def validate(model, dataloader, criterion, metrics, device):
 
     # Визуализируем случайные две картинки из val_loader'а
     # i, j = random.sample(range(BATCH_SIZE//4), 2) 
-    
+    metrics = metrics.to(device)
     with torch.no_grad():
         for images, masks in dataloader:
-            images = images.to(device)
-            masks = masks.unsqueeze(1).to(device)
+            images = images.to(device, non_blocking=True)
+            masks = masks.unsqueeze(1).to(device, non_blocking=True)
             
             outputs = model(images)
-            metrics.update(outputs, masks)
+            metrics.update(outputs.to(device, non_blocking=True), masks.to(device, non_blocking=True))
             loss = criterion(outputs, masks)
             val_loss += loss.item()
 
