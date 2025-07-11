@@ -2,14 +2,11 @@
 # Для обучения на kaggle:
 numpy==1.26.4
 albumentations==2.0.8
-scipy==1.13.0
 opencv-python-headless>=4.9.0.80
 Pillow==10.3.0
 matplotlib==3.8.4
 torch==2.7.1
-torchvision==0.19.1
-torchaudio==2.7.1
-fastai==2.7.19
+torchvision==0.18.1
 ipython==8.29.0
 
 # ver 2
