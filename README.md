@@ -33,7 +33,7 @@ You can test the model online:
 - **IoU (Intersection over Union)**
 - **F1-score**
 
-[](experiments/predictions/metrics.jpg)
+![](experiments/predictions/metrics.jpg)
 
 ## 📁 Project Structure
 
