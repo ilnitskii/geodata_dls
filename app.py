@@ -21,7 +21,7 @@ def download_model():
         if not os.path.exists(MODEL_PATH):
             
 
-            url = "https://www.dropbox.com/scl/fi/rnzdu2qw4ygoxizrgqb86/UNet_weights.pth?rlkey=07am8v1ekdabboxc2u536gee3&st=ctgvk2m4&dl=1"
+            url = "https://www.dropbox.com/scl/fi/4xa1vcfuuk2hjxtp2kyc7/UNet_weights.pth?rlkey=7jphy7glcxoo35qw9iuew6514&st=zuw9jeqi&dl=1"
             response = requests.get(url, stream=True)
 
             if response.status_code == 200:
