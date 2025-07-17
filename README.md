@@ -30,8 +30,6 @@ You can test the model online:
 
 ## 📊 Evaluation Metrics
 
-- **IoU (Intersection over Union)**
-- **F1-score**
 
 ![](experiments/predictions/metrics.jpg)
 
