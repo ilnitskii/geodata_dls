@@ -25,7 +25,7 @@ You can test the model online:
 
 - **Architecture**: U-Net + ResNet-34 encoder
 - **Loss Function**: Combined Dice Loss + Binary Cross Entropy (BCE)
-- **Trained From Scratch**: No ImageNet weights used
+- **Trained From Scratch**: No pretrained weights used
 - **Environment**: Google Colab, Kaggle
 
 ## 📊 Evaluation Metrics
